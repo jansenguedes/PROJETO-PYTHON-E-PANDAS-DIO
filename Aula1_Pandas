@@ -1,0 +1,41 @@
+#Importando a biblioteca pandas
+import pandas as pd
+
+df = pd.read_csv ("/content/drive/MyDrive/Colab Notebooks/DataSets/Gapminder.csv", error_bad_lines=False, sep=";")
+
+#Visualizando as 5 primeiras linhas
+df.head()
+
+df = df.rename(columns={"country":"Pais", "continent":"Continente", "year":"Ano", "lifeExp":"Expectativa de vida", "pop":"Pop Total", "gdpPercap":"PIB"})
+#Retorna as primeiras linhas no conjunto de dados
+df.head(10)
+
+#Shape retorna o valor total de linhas e colunas no conjunto de dados
+df.shape
+
+#Retornando a coluna no conjunto de dados
+df.columns
+
+#Retornando o tipo de dados em cada coluna
+df.dtypes
+
+#Retorna as ultimas linhas no conjunto de dados
+df.tail(15)
+
+#Retorna as informações estatisticas no conjunto de dados
+df.describe()
+
+df["Continente"].unique()
+
+Oceania = df.loc[df["Continente"] == "Oceania"]
+Oceania.head()
+
+Oceania["Continente"].unique()
+array(['Oceania'], dtype=object)
+
+df.groupby("Continente")["Pais"].nunique()
+df.groupby("Ano")["Expectativa de vida"].mean()
+
+df["PIB"].mean()
+df["PIB"].sum()
+
